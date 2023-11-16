@@ -11,10 +11,12 @@ var world;
 
 
 function setup() {
-	createCanvas(800, 600);
+	canvasW = windowWidth/1.5;
+	canvasH = windowHeight/1.5;
+	var canvas = createCanvas(canvasW, canvasH);
+	canvas.parent('Game');
 	rectMode(CENTER);
-
-
+	
 	engine = Engine.create();
 	world = engine.world;
 
@@ -32,8 +34,6 @@ function setup() {
 	rope5=new rope(bob5.body,roofObject.body,80)
 	
 	Engine.run(engine);
-	
-  
 }
 
 function draw() {
@@ -55,29 +55,6 @@ function draw() {
   bob5.display();
 }
 
-
-//CHOOSE THE CORRECT OPTION TO APPLY A KEYPRESSED TO CHANGE THE POSITION OF BALL OBJECT TO THE LEFT WHEN UP ARROW KEY IS PRESSED
-
-// function keyPressed() {
-// 	if (keyCode === DOWN_ARROW) {
-// 		Matter.Body.applyForce(bob1.body,bob1.body.position,{x:-50,y:-45});
-// 	}
-// }
-
-// function keyPressed() {
-// 	if (keyCode === UP_ARROW) {
-// 		Matter.Body.applyForce(bob1,bob1.position,{x:-50,y:-45});
-// 	}
-// }
-
-// function keyPressed() {
-// 	if (keyCode === UP_ARROW) {
-// 		Matter.Body.applyForce(bob1.body,{x:-50,y:-45});
-// 	}
-// }
-
- function keyPressed() {
- 	if (keyCode === UP_ARROW) {
- 		Matter.Body.applyForce(bob1.body,bob1.body.position,{x:-50,y:-45});
- 	}
- }
+function jump() {
+	Matter.Body.applyForce(bob1.body,bob1.body.position,{x:-50,y:-45});
+}
